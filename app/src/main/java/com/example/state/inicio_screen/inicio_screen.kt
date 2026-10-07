@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,10 +23,10 @@ fun InicioScreen(modifier: Modifier, numero: Int, click:()-> Unit){
 
     Column(modifier = modifier)
     {
-        Text(numero.toString(), fontSize = 50.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(100.dp))
-        Button(onClick = click) {
-            Text("sumar", fontSize = 20.sp)
-        }
+
+
+        var y by remember {mutableStateOf("0") }
+        TextField( value = y, onValueChange = {y=it})
     }
 
 
