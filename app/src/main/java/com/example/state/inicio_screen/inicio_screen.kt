@@ -1,6 +1,7 @@
 package com.example.state.inicio_screen
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -19,14 +20,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun InicioScreen(modifier: Modifier, numero: Int, click:()-> Unit){
+fun InicioScreen(modifier: Modifier){
 
     Column(modifier = modifier)
     {
-
-
         var y by remember {mutableStateOf("0") }
+        var x by remember { mutableStateOf("0") }
+        var z by remember { mutableStateOf(0) }
         TextField( value = y, onValueChange = {y=it})
+        TextField( value = x, onValueChange = {x=it})
+        Row(modifier = modifier) {
+            Button(onClick = {z = y.toInt() + x.toInt()}) {
+                Text("sumar", fontSize = 20.sp)
+            }
+        }
+        Text(z.toString(), fontSize = 50.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(100.dp))
     }
 
 
@@ -38,10 +46,9 @@ fun InicioScreen(modifier: Modifier, numero: Int, click:()-> Unit){
 @Composable
 fun inicioPreview(){
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        var x by remember { mutableStateOf(0) }
-        InicioScreen(modifier = Modifier.padding(innerPadding),
-            x,
-            { x += 1 })
+
+        InicioScreen(modifier = Modifier.padding(innerPadding))
+
     }
 
 }
