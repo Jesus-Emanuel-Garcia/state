@@ -27,8 +27,10 @@ fun InicioScreen(modifier: Modifier){
         var y by remember {mutableStateOf("0") }
         var x by remember { mutableStateOf("0") }
         var z by remember { mutableStateOf(0) }
+
         TextField( value = y, onValueChange = {y=it})
         TextField( value = x, onValueChange = {x=it})
+
         Row(modifier = modifier) {
             Button(onClick = {z = y.toInt() + x.toInt()}) {
                 Text("sumar", fontSize = 20.sp)
